@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "310397066971",
+    "project_id": "bloc-practice-88c71",
+    "storage_bucket": "bloc-practice-88c71.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:310397066971:android:530b49ee27763b9f1b36fe",
+        "android_client_info": {
+          "package_name": "com.example.bloc_01"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "310397066971-egps9vqnvv9720eqilolttthca2d74ib.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNof3TtYtprlooIVM2gELGDLrep3lUe-A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "310397066971-egps9vqnvv9720eqilolttthca2d74ib.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
