@@ -1,4 +1,5 @@
 import 'package:bloc_01/bloc/sign_in_bloc/sign_in_bloc.dart';
+import 'package:bloc_01/controller/sign_in_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -65,8 +66,13 @@ class SignIn extends StatelessWidget {
                             context.read<SignInBloc>().add(PasswordEvent(value));
                           }),
                           forgetPasswordText(),
-                          loginAndRegButton("Log In", "login"),
-                          loginAndRegButton("Sign Up", "reg"),
+                          loginAndRegButton("Log In", "login",() {
+                            debugPrint("Login Button clicked");
+                            SignInController(context: context).handleSignIn("email");
+                          }),
+                          loginAndRegButton("Sign Up", "reg",() {
+                            debugPrint("Sign up Button clicked");
+                          }),
                         ],
                       ),
                     )

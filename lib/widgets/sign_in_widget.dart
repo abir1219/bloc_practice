@@ -104,9 +104,9 @@ Widget reusableTextField(String hintText, String fieldType, String iconTitle,
   );
 }
 
-Widget loginAndRegButton(String btnName, String type) {
+Widget loginAndRegButton(String btnName, String type,void Function()? func) {
   return GestureDetector(
-    onTap: () {},
+    onTap: () =>func!(),
     child: Container(
       margin: EdgeInsets.only(top: type == "login" ? 30.w : 15.w),
       width: 325.w,
