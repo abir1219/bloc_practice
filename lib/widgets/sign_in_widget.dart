@@ -1,12 +1,19 @@
+import 'package:bloc_01/screens/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../common/values/colors.dart';
 
-AppBar buildAppBar() {
+AppBar buildAppBar(String title,[BuildContext? context]) {
   return AppBar(
+    leading: title=="Sign Up"?IconButton(
+      onPressed: (){
+        Navigator.pushAndRemoveUntil(context!, MaterialPageRoute(builder: (context) =>const SignIn(),),(route) => false,);
+      },
+      icon:const Icon(Icons.arrow_back_ios_new_outlined,color: Colors.black,size: 24,),
+    ):null,
     title: Text(
-      "Log In",
+      title,
       style: TextStyle(
           fontSize: 14.sp, color: Colors.black, fontWeight: FontWeight.normal),
     ),
@@ -74,7 +81,7 @@ Widget reusableTextField(String hintText, String fieldType, String iconTitle,
             child: Image.asset("assets/icons/$iconTitle.png")),
         Container(
           padding: EdgeInsets.only(right: 8.w, left: 4.w),
-          width: 265.w,
+          width: 285.w,
           child: TextField(
             onChanged: (value) => func!(value),
             keyboardType: fieldType == "email"
@@ -88,6 +95,11 @@ Widget reusableTextField(String hintText, String fieldType, String iconTitle,
                 fontWeight: FontWeight.normal),
             decoration: InputDecoration(
               hintText: hintText,
+              /*suffixIcon: fieldType == "password" ?IconButton(
+                onPressed: () {},
+                icon: Icon(fieldType == "password" ? Icons.visibility : null,color: Colors.black,),
+                color: Colors.white,
+              ):Container(),*/
               hintStyle: TextStyle(
                   color: Colors.grey.withOpacity(0.5), fontSize: 12.sp),
               focusedBorder: const OutlineInputBorder(
@@ -104,9 +116,9 @@ Widget reusableTextField(String hintText, String fieldType, String iconTitle,
   );
 }
 
-Widget loginAndRegButton(String btnName, String type,void Function()? func) {
+Widget loginAndRegButton(String btnName, String type, void Function()? func) {
   return GestureDetector(
-    onTap: () =>func!(),
+    onTap: () => func!(),
     child: Container(
       margin: EdgeInsets.only(top: type == "login" ? 30.w : 15.w),
       width: 325.w,

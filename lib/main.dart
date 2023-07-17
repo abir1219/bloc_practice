@@ -9,6 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'bloc/count_bloc/count_event.dart';
 import 'bloc/sign_in_bloc/sign_in_bloc.dart';
+import 'common/bloc_provider_page.dart';
 
 
 void main() async{
@@ -26,11 +27,7 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       builder: (BuildContext context, Widget? child) {
         return MultiBlocProvider(
-          providers: [
-            BlocProvider<CountBloc>(create: (context) => CountBloc()),
-            BlocProvider<OnBoardingBloc>(create: (context) => OnBoardingBloc()),
-            BlocProvider<SignInBloc>(create: (context) => SignInBloc()),
-          ],
+          providers: BlocProviderPage.blocProviders,
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',

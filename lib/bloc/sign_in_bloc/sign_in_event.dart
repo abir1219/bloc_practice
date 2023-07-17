@@ -13,3 +13,9 @@ class PasswordEvent extends SignInEvent {
 
   PasswordEvent(this.password);
 }
+
+class PasswordVisibility extends SignInEvent{
+  final bool isVisible;
+
+  PasswordVisibility(this.isVisible);
+}

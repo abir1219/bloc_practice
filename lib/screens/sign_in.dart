@@ -1,5 +1,6 @@
 import 'package:bloc_01/bloc/sign_in_bloc/sign_in_bloc.dart';
 import 'package:bloc_01/controller/sign_in_controller.dart';
+import 'package:bloc_01/screens/registration.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,7 +23,7 @@ class SignIn extends StatelessWidget {
           child: SafeArea(
             child: Scaffold(
               backgroundColor: Colors.white,
-              appBar: buildAppBar(),
+              appBar: buildAppBar("Log In"),
               body: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -72,6 +73,7 @@ class SignIn extends StatelessWidget {
                           }),
                           loginAndRegButton("Sign Up", "reg",() {
                             debugPrint("Sign up Button clicked");
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => const Registration(),));
                           }),
                         ],
                       ),
