@@ -20,27 +20,29 @@ class RegisterController {
 
     if (username.isEmpty) {
       Utils.showFlutterToastMsg(msg: "Username can not be empty");
-      return;
+      
     }
 
     if (email.isEmpty) {
       Utils.showFlutterToastMsg(msg: "email can not be empty");
-      return;
+      
     }
 
     if (password.isEmpty) {
       Utils.showFlutterToastMsg(msg: "Password can not be empty");
-      return;
+      
     }
 
     if (rePassword.isEmpty) {
       Utils.showFlutterToastMsg(msg: "Confirm password can not be empty");
-      return;
+      
     }
+
+    // debugPrint("Password: $password & Confirm Password: $rePassword");
 
     if (password != rePassword) {
       Utils.showFlutterToastMsg(msg: "Password mismatch");
-      return;
+      
     }
 
     try {

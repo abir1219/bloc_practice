@@ -15,7 +15,7 @@ class SignUpState {
     return SignUpState(
         username: username ?? this.username,
         email: email ?? this.email,
-        password: password ?? this.email,
-        repassword: repassword ?? this.password);
+        password: password ?? this.password,
+        repassword: repassword ?? this.repassword);
   }
 }

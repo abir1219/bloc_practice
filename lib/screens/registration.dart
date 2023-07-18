@@ -1,5 +1,8 @@
+import 'package:bloc_01/bloc/signup_bloc/signup_bloc.dart';
+import 'package:bloc_01/bloc/signup_bloc/signup_event.dart';
 import 'package:bloc_01/controller/register_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../widgets/sign_in_widget.dart';
@@ -33,25 +36,33 @@ class Registration extends StatelessWidget {
                             margin: EdgeInsets.only(left: 10.w),
                             child: reusableText("User name")),
                         reusableTextField("Enter your username", "email",
-                            "user", (value) {}),
+                            "user", (value) {
+                          context.read<SignUpBloc>().add(UsernameEvent(value));
+                            }),
 
                         Container(
                             margin: EdgeInsets.only(left: 10.w),
                             child: reusableText("Email")),
                         reusableTextField("Enter your email address", "email",
-                            "user", (value) {}),
+                            "user", (value) {
+                              context.read<SignUpBloc>().add(EmailEvent(value));
+                            }),
 
                         Container(
                             margin: EdgeInsets.only(left: 10.w),
                             child: reusableText("Password")),
                         reusableTextField("Enter your password", "password",
-                            "lock", (value) {}),
+                            "lock", (value) {
+                              context.read<SignUpBloc>().add(PasswordEvent(value));
+                            }),
 
                         Container(
                             margin: EdgeInsets.only(left: 10.w),
                             child: reusableText("Confirm Password")),
                         reusableTextField("Enter your confirm password", "password",
-                            "lock", (value) {}),
+                            "lock", (value) {
+                              context.read<SignUpBloc>().add(ConfirmPasswordEvent(value));
+                            }),
 
                         const SizedBox(height: 15,),
                         reusableText(

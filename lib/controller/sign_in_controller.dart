@@ -1,3 +1,5 @@
+// ignore_for_file: dead_code
+
 import 'package:bloc_01/bloc/sign_in_bloc/sign_in_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -24,36 +26,36 @@ class SignInController {
         if (emailAddress.isEmpty) {
           // debugPrint("Email is empty");
           Utils.showFlutterToastMsg(msg:"Email is empty");
-          return;
+
         }else{
           debugPrint("Email is: $emailAddress");
           Utils.showFlutterToastMsg(msg:"Email is: $emailAddress");
-          return;
+          //
         }
         if (password.isEmpty) {
           debugPrint("Password is empty");
           Utils.showFlutterToastMsg(msg:"Password is empty");
-          return;
+
         }else{
           debugPrint("Password is: $password");
           Utils.showFlutterToastMsg(msg:"Password is: $password");
-          return;
+
         }
 
         try {
           final credential = await FirebaseAuth.instance
               .signInWithEmailAndPassword(
-                  email: emailAddress, password: password);
+              email: emailAddress, password: password);
 
           if (credential.user == null) {
             debugPrint("User does not exist");
             Utils.showFlutterToastMsg(msg:"User does not exist");
-            return;
+
           }
           if (!credential.user!.emailVerified) {
             debugPrint("User email is not verified");
             Utils.showFlutterToastMsg(msg:"User email is not verified");
-            return;
+
           }
 
           var user = credential.user;
@@ -61,26 +63,26 @@ class SignInController {
             // we got verified user from firebase
             debugPrint("User exist");
             Utils.showFlutterToastMsg(msg:"User exist");
-            return;
+
           } else {
             // we have error getting user from firebase
             debugPrint("User does not exist");
             Utils.showFlutterToastMsg(msg:"User does not exist");
-            return;
+
           }
         }on FirebaseAuthException catch (e) {
           if(e.code=="user-not-found"){
             debugPrint("No user found for this email");
             Utils.showFlutterToastMsg(msg:"No user found for this email");
-            return;
+
           }else if(e.code=="wrong-password"){
             debugPrint("Wrong password provided for this user");
             Utils.showFlutterToastMsg(msg:"Wrong password provided for this user");
-            return;
+
           }else if(e.code=="invalid-email"){
             debugPrint("invalid email");
             Utils.showFlutterToastMsg(msg:"invalid email");
-            return;
+
           }
         }
       }
