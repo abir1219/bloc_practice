@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../bloc/sign_in_bloc/sign_in_event.dart';
 import '../bloc/sign_in_bloc/sign_in_state.dart';
+import '../common/routes/routes.dart';
 import '../widgets/sign_in_widget.dart';
 
 class SignIn extends StatelessWidget {
@@ -73,7 +74,8 @@ class SignIn extends StatelessWidget {
                           }),
                           loginAndRegButton("Sign Up", "reg",() {
                             debugPrint("Sign up Button clicked");
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => const Registration(),));
+                            // Navigator.push(context, MaterialPageRoute(builder: (context) => const Registration(),));
+                            Navigator.of(context).pushNamedAndRemoveUntil(AppRoutes.REGISTER,(route) => false,);
                           }),
                         ],
                       ),

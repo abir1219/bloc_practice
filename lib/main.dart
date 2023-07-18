@@ -1,17 +1,12 @@
 import 'package:bloc_01/bloc/count_bloc/count_bloc.dart';
 import 'package:bloc_01/bloc/count_bloc/count_state.dart';
-import 'package:bloc_01/bloc/onboarding_bloc/on_boarding_bloc.dart';
-import 'package:bloc_01/common/routes/pages.dart';
-import 'package:bloc_01/screens/application_page.dart';
-import 'package:bloc_01/screens/on_boarding_screen.dart';
+import 'package:bloc_01/common/routes/routes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'bloc/count_bloc/count_event.dart';
-import 'bloc/sign_in_bloc/sign_in_bloc.dart';
-import 'common/bloc_provider_page.dart';
 
 
 void main() async{
@@ -40,7 +35,8 @@ class MyApp extends StatelessWidget {
               ),
               primarySwatch: Colors.blue,
             ),
-            home: const ApplicationPage(),//const OnBoardingScreen(),
+            // home: const ApplicationPage(),//const OnBoardingScreen(),
+            onGenerateRoute: AppPages.generatePageRoute,
           ),
         );
       },

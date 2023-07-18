@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../common/routes/names.dart';
 import '../utils/utils.dart';
 
 class SignInController {
@@ -63,6 +64,7 @@ class SignInController {
             // we got verified user from firebase
             debugPrint("User exist");
             Utils.showFlutterToastMsg(msg:"User exist");
+            Navigator.of(context).pushNamedAndRemoveUntil(AppRoutes.APPLICATION, (route) => false);
 
           } else {
             // we have error getting user from firebase

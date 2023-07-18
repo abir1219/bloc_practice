@@ -2,16 +2,27 @@ import 'package:bloc_01/screens/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../common/routes/routes.dart';
 import '../common/values/colors.dart';
 
-AppBar buildAppBar(String title,[BuildContext? context]) {
+AppBar buildAppBar(String title, [BuildContext? context]) {
   return AppBar(
-    leading: title=="Sign Up"?IconButton(
-      onPressed: (){
-        Navigator.pushAndRemoveUntil(context!, MaterialPageRoute(builder: (context) =>const SignIn(),),(route) => false,);
-      },
-      icon:const Icon(Icons.arrow_back_ios_new_outlined,color: Colors.black,size: 24,),
-    ):null,
+    leading: title == "Sign Up"
+        ? IconButton(
+            onPressed: () {
+              // Navigator.pushAndRemoveUntil(context!, MaterialPageRoute(builder: (context) =>const SignIn(),),(route) => false,);
+              Navigator.of(context!).pushNamedAndRemoveUntil(
+                AppRoutes.SIGN_IN,
+                (route) => false,
+              );
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios_new_outlined,
+              color: Colors.black,
+              size: 24,
+            ),
+          )
+        : null,
     title: Text(
       title,
       style: TextStyle(

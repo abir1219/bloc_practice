@@ -3,6 +3,7 @@ import 'package:bloc_01/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../common/routes/routes.dart';
 import '../screens/sign_in.dart';
 
 class PageViewWidget extends StatelessWidget {
@@ -63,7 +64,8 @@ class PageViewWidget extends StatelessWidget {
                     duration: const Duration(milliseconds: 500),
                     curve: Curves.easeIn);
               } else {
-                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const SignIn()),(route) => false,);
+                // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const SignIn()),(route) => false,);
+                Navigator.of(context).pushNamedAndRemoveUntil(AppRoutes.SIGN_IN,(route) => false,);
               }
             })
       ],

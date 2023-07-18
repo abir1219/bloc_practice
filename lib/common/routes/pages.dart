@@ -1,12 +1,15 @@
+import 'package:bloc_01/bloc/application_bloc/application_bloc.dart';
 import 'package:bloc_01/bloc/onboarding_bloc/on_boarding_bloc.dart';
 import 'package:bloc_01/bloc/sign_in_bloc/sign_in_bloc.dart';
 import 'package:bloc_01/bloc/signup_bloc/signup_bloc.dart';
 import 'package:bloc_01/common/routes/routes.dart';
-import 'package:bloc_01/screens/application_page.dart';
 import 'package:bloc_01/screens/on_boarding_screen.dart';
 import 'package:bloc_01/screens/registration.dart';
 import 'package:bloc_01/screens/sign_in.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../screens/application_page.dart';
 
 class AppPages {
   static List<PageEntity> routes() {
@@ -14,14 +17,16 @@ class AppPages {
       PageEntity(
           route: AppRoutes.INITIAL,
           page: const OnBoardingScreen(),
-          bloc: OnBoardingBloc),
+          bloc: BlocProvider(
+            create: (_) => OnBoardingBloc(),
+          )),
       PageEntity(
-          route: AppRoutes.SIGN_IN, page: const SignIn(), bloc: SignInBloc),
+          route: AppRoutes.SIGN_IN, page: const SignIn(), bloc: BlocProvider(create: (_) => SignInBloc(),)),
       PageEntity(
           route: AppRoutes.REGISTER,
           page: const Registration(),
-          bloc: SignUpBloc),
-      PageEntity(route: AppRoutes.APPLICATION, page: const ApplicationPage()),
+          bloc: BlocProvider(create: (_) => SignUpBloc(),)),
+      PageEntity(route: AppRoutes.APPLICATION, page: const ApplicationPage(),bloc: BlocProvider(create: (_) => ApplicationBloc(),)),
     ];
   }
 
@@ -31,6 +36,17 @@ class AppPages {
       blocProviders.add(bloc.bloc);
     }
     return blocProviders;
+  }
+
+  static MaterialPageRoute generatePageRoute(RouteSettings settings){
+    if(settings.name != null){
+      var result = routes().where((element) => element.route == settings.name);
+      if(result.isNotEmpty){
+        debugPrint("First name = ${result.first.page}");
+        return MaterialPageRoute(builder: (_) => result.first.page,settings: settings);
+      }
+    }
+    return MaterialPageRoute(builder: (_) => const SignIn(),settings: settings);
   }
 }
 
