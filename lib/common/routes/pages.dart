@@ -3,7 +3,6 @@ import 'package:bloc_01/bloc/onboarding_bloc/on_boarding_bloc.dart';
 import 'package:bloc_01/bloc/sign_in_bloc/sign_in_bloc.dart';
 import 'package:bloc_01/bloc/signup_bloc/signup_bloc.dart';
 import 'package:bloc_01/common/routes/routes.dart';
-import 'package:bloc_01/common/values/constants.dart';
 import 'package:bloc_01/screens/on_boarding_screen.dart';
 import 'package:bloc_01/screens/registration.dart';
 import 'package:bloc_01/screens/sign_in.dart';
