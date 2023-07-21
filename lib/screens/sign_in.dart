@@ -33,13 +33,17 @@ class SignIn extends StatelessWidget {
                       margin: EdgeInsets.only(top: 25.w),
                       child: Column(
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              buildIconWidget(context, "google"),
-                              buildIconWidget(context, "apple"),
-                              buildIconWidget(context, "facebook"),
-                            ],
+                          Container(
+                            margin:EdgeInsets.only(top: 40.h,bottom: 20.h),
+                            padding: EdgeInsets.only(left: 50.h,right: 50.h),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                buildIconWidget(context, "google"),
+                                buildIconWidget(context, "apple"),
+                                buildIconWidget(context, "facebook"),
+                              ],
+                            ),
                           ),
                           Center(
                               child: reusableText(
@@ -68,6 +72,7 @@ class SignIn extends StatelessWidget {
                             context.read<SignInBloc>().add(PasswordEvent(value));
                           }),
                           forgetPasswordText(),
+                          SizedBox(height: 70.h,),
                           loginAndRegButton("Log In", "login",() {
                             debugPrint("Login Button clicked");
                             SignInController(context: context).handleSignIn("email");

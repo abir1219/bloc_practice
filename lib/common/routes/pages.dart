@@ -2,7 +2,9 @@ import 'package:bloc_01/bloc/application_bloc/application_bloc.dart';
 import 'package:bloc_01/bloc/onboarding_bloc/on_boarding_bloc.dart';
 import 'package:bloc_01/bloc/sign_in_bloc/sign_in_bloc.dart';
 import 'package:bloc_01/bloc/signup_bloc/signup_bloc.dart';
+import 'package:bloc_01/bloc/slider_bloc/slider_bloc.dart';
 import 'package:bloc_01/common/routes/routes.dart';
+import 'package:bloc_01/screens/home_page.dart';
 import 'package:bloc_01/screens/on_boarding_screen.dart';
 import 'package:bloc_01/screens/registration.dart';
 import 'package:bloc_01/screens/sign_in.dart';
@@ -38,6 +40,12 @@ class AppPages {
           page: const ApplicationPage(),
           bloc: BlocProvider(
             create: (_) => ApplicationBloc(),
+          )),
+      PageEntity(
+          route: AppRoutes.HOME_PAGE,
+          page: const HomePage(),
+          bloc: BlocProvider(
+            create: (_) => SliderBloc(),
           )),
     ];
   }

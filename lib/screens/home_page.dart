@@ -1,8 +1,6 @@
 import 'package:bloc_01/common/values/colors.dart';
-import 'package:bloc_01/widgets/sign_in_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../widgets/home_page_widget.dart';
 
 class HomePage extends StatelessWidget {
@@ -20,11 +18,19 @@ class HomePage extends StatelessWidget {
           children: [
 
             homePageText("Hello,",color: AppColors.primaryThreeElementText,top: 20),
-
             homePageText("Abir",top: 5),
             SizedBox(height: 10.h,),
             searchView(context),
-
+            SizedBox(height: 10.h,),
+            sliderView(context),
+            SizedBox(height: 10.h,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Choice your course",style: TextStyle(fontSize: 16.sp,color: Colors.black,fontWeight: FontWeight.bold),),
+                Text("See All",style: TextStyle(fontSize: 12.sp,color: Colors.grey.withOpacity(0.5),fontWeight: FontWeight.bold),)
+              ],
+            )
           ],
         ),
       ),

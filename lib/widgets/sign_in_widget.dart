@@ -77,7 +77,7 @@ Widget reusableTextField(String hintText, String fieldType, String iconTitle,
   return Container(
     width: 325.w,
     height: 45.h,
-    margin: EdgeInsets.only(top: 5.w),
+    margin: EdgeInsets.only(top: 10.w),
     decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15.w),
         color: Colors.white,
