@@ -1,3 +1,5 @@
+import 'package:bloc_01/common/values/constants.dart';
+import 'package:bloc_01/global.dart';
 import 'package:bloc_01/main.dart';
 import 'package:bloc_01/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -65,6 +67,7 @@ class PageViewWidget extends StatelessWidget {
                     curve: Curves.easeIn);
               } else {
                 // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const SignIn()),(route) => false,);
+                Global.storageService.setBool(AppConstants.DEVICE_OPEN_FIRST_TIME, true);
                 Navigator.of(context).pushNamedAndRemoveUntil(AppRoutes.SIGN_IN,(route) => false,);
               }
             })

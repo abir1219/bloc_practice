@@ -1,6 +1,7 @@
 import 'package:bloc_01/bloc/count_bloc/count_bloc.dart';
 import 'package:bloc_01/bloc/count_bloc/count_state.dart';
 import 'package:bloc_01/common/routes/routes.dart';
+import 'package:bloc_01/global.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,8 +11,7 @@ import 'bloc/count_bloc/count_event.dart';
 
 
 void main() async{
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Global.init();
   runApp(const MyApp());
 }
 

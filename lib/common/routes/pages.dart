@@ -9,6 +9,7 @@ import 'package:bloc_01/screens/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../global.dart';
 import '../../screens/application_page.dart';
 
 class AppPages {
@@ -21,12 +22,23 @@ class AppPages {
             create: (_) => OnBoardingBloc(),
           )),
       PageEntity(
-          route: AppRoutes.SIGN_IN, page: const SignIn(), bloc: BlocProvider(create: (_) => SignInBloc(),)),
+          route: AppRoutes.SIGN_IN,
+          page: const SignIn(),
+          bloc: BlocProvider(
+            create: (_) => SignInBloc(),
+          )),
       PageEntity(
           route: AppRoutes.REGISTER,
           page: const Registration(),
-          bloc: BlocProvider(create: (_) => SignUpBloc(),)),
-      PageEntity(route: AppRoutes.APPLICATION, page: const ApplicationPage(),bloc: BlocProvider(create: (_) => ApplicationBloc(),)),
+          bloc: BlocProvider(
+            create: (_) => SignUpBloc(),
+          )),
+      PageEntity(
+          route: AppRoutes.APPLICATION,
+          page: const ApplicationPage(),
+          bloc: BlocProvider(
+            create: (_) => ApplicationBloc(),
+          )),
     ];
   }
 
@@ -38,15 +50,22 @@ class AppPages {
     return blocProviders;
   }
 
-  static MaterialPageRoute generatePageRoute(RouteSettings settings){
-    if(settings.name != null){
+  static MaterialPageRoute generatePageRoute(RouteSettings settings) {
+    if (settings.name != null) {
       var result = routes().where((element) => element.route == settings.name);
-      if(result.isNotEmpty){
+      if (result.isNotEmpty) {
+        bool openDiviceFirstTime = Global.storageService.getDiviceFirstOpen();
+        if (result.first.route == AppRoutes.INITIAL && openDiviceFirstTime) {
+          return MaterialPageRoute(
+              builder: (_) => const SignIn(), settings: settings);
+        }
         debugPrint("First name = ${result.first.page}");
-        return MaterialPageRoute(builder: (_) => result.first.page,settings: settings);
+        return MaterialPageRoute(
+            builder: (_) => result.first.page, settings: settings);
       }
     }
-    return MaterialPageRoute(builder: (_) => const SignIn(),settings: settings);
+    return MaterialPageRoute(
+        builder: (_) => const SignIn(), settings: settings);
   }
 }
 
@@ -55,5 +74,5 @@ class PageEntity {
   Widget page;
   dynamic bloc;
 
-  PageEntity({required this.route, required this.page, this.bloc});
+  PageEntity({required this.route, required this.page,required this.bloc});
 }
