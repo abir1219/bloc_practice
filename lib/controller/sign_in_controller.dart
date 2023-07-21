@@ -1,6 +1,8 @@
 // ignore_for_file: dead_code
 
 import 'package:bloc_01/bloc/sign_in_bloc/sign_in_bloc.dart';
+import 'package:bloc_01/common/values/constants.dart';
+import 'package:bloc_01/global.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,20 +28,19 @@ class SignInController {
 
         if (emailAddress.isEmpty) {
           // debugPrint("Email is empty");
-          Utils.showFlutterToastMsg(msg:"Email is empty");
+          // Utils.showFlutterToastMsg(msg:"Email is empty");
 
         }else{
           debugPrint("Email is: $emailAddress");
-          Utils.showFlutterToastMsg(msg:"Email is: $emailAddress");
-          //
+          // Utils.showFlutterToastMsg(msg:"Email is: $emailAddress");
         }
         if (password.isEmpty) {
           debugPrint("Password is empty");
-          Utils.showFlutterToastMsg(msg:"Password is empty");
+          // Utils.showFlutterToastMsg(msg:"Password is empty");
 
         }else{
           debugPrint("Password is: $password");
-          Utils.showFlutterToastMsg(msg:"Password is: $password");
+          // Utils.showFlutterToastMsg(msg:"Password is: $password");
 
         }
 
@@ -63,7 +64,8 @@ class SignInController {
           if (user != null) {
             // we got verified user from firebase
             debugPrint("User exist");
-            Utils.showFlutterToastMsg(msg:"User exist");
+            // Utils.showFlutterToastMsg(msg:"User exist");
+            Global.storageService.setString(AppConstants.STORAGE_USER_TOKEN_KEY, "123456");
             Navigator.of(context).pushNamedAndRemoveUntil(AppRoutes.APPLICATION, (route) => false);
 
           } else {
