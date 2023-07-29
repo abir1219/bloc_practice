@@ -16,20 +16,22 @@ class HomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             homePageText("Hello,",color: AppColors.primaryThreeElementText,top: 20),
             homePageText("Abir",top: 5),
             SizedBox(height: 10.h,),
             searchView(context),
-            SizedBox(height: 10.h,),
+            SizedBox(height: 10.h),
             sliderView(context),
-            SizedBox(height: 10.h,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("Choice your course",style: TextStyle(fontSize: 16.sp,color: Colors.black,fontWeight: FontWeight.bold),),
-                Text("See All",style: TextStyle(fontSize: 12.sp,color: Colors.grey.withOpacity(0.5),fontWeight: FontWeight.bold),)
-              ],
+            Container(
+              width: 375.w,
+              margin: EdgeInsets.only(top: 15.h),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Choice your course",style: TextStyle(fontSize: 16.sp,color: Colors.black,fontWeight: FontWeight.bold),),
+                  Text("See All",style: TextStyle(fontSize: 10.sp,color: Colors.grey.withOpacity(0.5),fontWeight: FontWeight.bold),)
+                ],
+              ),
             )
           ],
         ),
